@@ -1,5 +1,4 @@
 import java.util.*;
-import java.io.File.*;
 
 public class okane{
 	/* クラス変数 */
@@ -8,33 +7,6 @@ public class okane{
 	static Scanner sc = new Scanner(System.in);
 	static int[] gakuhi = new int[4];
 
-	public static void main(String args[]){
-		init();	
-		while(power_on){
-			System.out.println("----------------------------------------------------");
-			System.out.println("機能を選択してください");
-			System.out.println("1:終了");
-			System.out.println("2:所持金推移");
-			System.out.println("3:データ修正");
-			System.out.println("4:データ確認");
-			System.out.println("----------------------------------------------------");
-			int select = sc.nextInt();
-			switch(select){
-				case 1:
-					endApp();
-					break;
-				case 2:
-					printMyMoney();
-					break;
-				case 3:
-					init();
-					break;
-				case 4:
-					printData();
-					break;
-			}
-		}
-	}
 
 	private static void init(){
 		System.out.println("現状の所持金を入力してください");
@@ -82,3 +54,32 @@ public class okane{
 	}
 
 }
+
+//	public static void main(String args[]){
+//		init();	
+//		while(power_on){
+//			System.out.println("----------------------------------------------------");
+//			System.out.println("機能を選択してください");
+//			System.out.println("1:終了");
+//			System.out.println("2:所持金推移");
+//			System.out.println("3:データ修正");
+//			System.out.println("4:データ確認");
+//			System.out.println("----------------------------------------------------");
+//			int select = sc.nextInt();
+//			switch(select){
+//				case 1:
+//					endApp();
+//					break;
+//				case 2:
+//					printMyMoney();
+//					break;
+//				case 3:
+//					init();
+//					break;
+//				case 4:
+//					printData();
+//					break;
+//			}
+//		}
+//	}
+
