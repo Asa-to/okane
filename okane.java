@@ -26,7 +26,7 @@ public class okane{
 					printMyMoney();
 					break;
 				case 3:
-					init();
+					updateDate();
 					break;
 				case 4:
 					printData();
@@ -48,6 +48,28 @@ public class okane{
 			gakuhi[i - 1] = sc.nextInt();
 		}
 	}
+
+	private static void updateDate(){
+		System.out.println("データを更新しないときは0を入力してください");
+		int check;
+		System.out.println("現状の所持金を入力してください");
+		check = sc.nextInt();
+		if(check != 0){myMoney = check;}
+		System.out.println("毎月入る奨学金の額を入力してください");
+		check = sc.nextInt();
+		if(check != 0){syougaku = check;}
+		System.out.println("最後に奨学金が入金された年月をスペース区切りで入力してください");
+		check = sc.nextInt();
+		if(check != 0){firstYear = check;}
+		check = sc.nextInt();
+		if(check != 0){firstMonth = check;}
+		for(int i = 1; i <= 4; i++){
+			System.out.println(i+"年次の学費を入力してください");
+			check = sc.nextInt();
+			if(check != 0){gakuhi[i - 1] = check;}
+		}
+	}
+
 
 	private static void printMyMoney(){
 		int year = firstYear;
