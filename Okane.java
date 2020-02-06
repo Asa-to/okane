@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class okane{
+public class Okane{
 	/* クラス変数 */
 	static int myMoney, syougaku, firstYear, firstMonth ;
 	static boolean power_on = true;
