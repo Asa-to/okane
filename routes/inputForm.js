@@ -12,7 +12,7 @@ router.post('/confirm', function(req, res, next){
         month: req.body['month'] ? req.body['month'] : today.getMonth()+1,
         day: req.body['day'] ? req.body['day'] : today.getDate(),
         payment: req.body['payment'] ? req.body['payment'] : 0,
-        expence: req.body['balance'].value === 'expence'
+        expence: req.body['balance'] === 'expence'
     };
     res.render('inputForm', {data: data});
 });
