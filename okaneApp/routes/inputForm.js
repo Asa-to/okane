@@ -14,7 +14,6 @@ router.post('/confirm', function(req, res, next){
         payment: req.body['payment'] ? req.body['payment'] : 0,
         expence: req.body['balance'].value === 'expence'
     };
-    console.log(data['year']);
     res.render('inputForm', {data: data});
 });
 

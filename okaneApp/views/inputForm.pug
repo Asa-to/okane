@@ -7,6 +7,7 @@ block content
             p #{data['payment']}円の支出がありました。
         else
             p #{data['payment']}円の収入がありました。
+        a(href='/inputForm') 入力ページに戻る
 
     else
         form(method='POST' action='inputForm/confirm')
@@ -23,3 +24,6 @@ block content
             input(type='radio' name='balance' value='income') 
             | 収入
             input(type='submit' name='送信')
+    
+    p
+        a(href='/') トップページに戻る
