@@ -3,5 +3,4 @@
 *.java
 
 # node.js installes modules
-package.json
 node_modules
