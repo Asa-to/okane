@@ -8,8 +8,8 @@ var session = require('express-session');
 var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 
-var GOOGLE_CLIENT_ID = '303339814215-46e7ksq2f33h7bka3rc2rtkk68krq1i1.apps.googleusercontent.com';
-var GOOGLE_CLIENT_SECRET = 'LvMewWkvb5kazKKhxVmliNU-';
+var GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || '303339814215-46e7ksq2f33h7bka3rc2rtkk68krq1i1.apps.googleusercontent.com';
+var GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET || 'LvMewWkvb5kazKKhxVmliNU-';
 
 passport.serializeUser(function(user, done){
   done(null, user);
