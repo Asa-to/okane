@@ -33,6 +33,7 @@ passport.use(new GoogleStrategy({
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
+var inputFormRouter = require('./routes/inputForm');
 
 var app = express();
 app.use(helmet());
@@ -54,6 +55,7 @@ app.use(passport.session());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);
+app.use('/inputForm', inputFormRouter);
 
 app.get('/auth/google',
   passport.authenticate('google', { scope: ['profile'] }));

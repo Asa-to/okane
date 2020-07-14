@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    if data
+        p #{data['year']}年#{data['month']}月#{data['day']}日
+        if data['expence']
+            p #{data['payment']}円の支出がありました。
+        else
+            p #{data['payment']}円の収入がありました。
+
+    else
+        form(method='POST' action='inputForm/confirm')
+            input(type='text' name='year')
+            | 年
+            input(type='text' name='month') 
+            | 月
+            input(type='text' name='day') 
+            | 日
+            input(type='text' name='payment') 
+            | 円
+            input(type='radio' name='balance' value='expence' checked='true') 
+            | 支出
+            input(type='radio' name='balance' value='income') 
+            | 収入
+            input(type='submit' name='送信')
