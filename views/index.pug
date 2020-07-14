@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  if user
+    p hello #{user.name.givenName}
+    p 
+      a(href='/inputForm') 収支入力
+    a(href='/logout') ログアウト
+  else
+    a(href='/auth/google') googleでログイン
+      
