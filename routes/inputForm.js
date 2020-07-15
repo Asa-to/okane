@@ -1,12 +1,19 @@
 var express = require('express');
 var router = express.Router();
 
+var today = new Date();
+
 router.get('/', function(req, res, next){
-    res.render('inputForm');
+    res.render('inputForm',{
+        today: {
+            year: today.getFullYear(),
+            month: today.getMonth()+1,
+            day: today.getDate()
+        }
+    });
 });
 
 router.post('/confirm', function(req, res, next){
-    var today = new Date();
     var data = {
         year: req.body['year'] ? req.body['year'] : today.getFullYear(),
         month: req.body['month'] ? req.body['month'] : today.getMonth()+1,

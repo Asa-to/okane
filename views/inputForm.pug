@@ -11,13 +11,13 @@ block content
 
     else
         form(method='POST' action='inputForm/confirm')
-            input(type='text' name='year')
+            input(type='number' name='year' value=today['year'])
             | 年
-            input(type='text' name='month') 
+            input(type='number' name='month' value=today['month']) 
             | 月
-            input(type='text' name='day') 
+            input(type='number' name='day' value=today['day']) 
             | 日
-            input(type='text' name='payment') 
+            input(type='number' name='payment' required) 
             | 円
             input(type='radio' name='balance' value='expence' checked='true') 
             | 支出
