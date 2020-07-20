@@ -34,6 +34,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
 var inputFormRouter = require('./routes/inputForm');
+var calendarRouter = require('./routes/calendar');
 
 var app = express();
 app.use(helmet());
@@ -56,6 +57,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);
 app.use('/inputForm', inputFormRouter);
+app.use('/calendar', calendarRouter);
 
 app.get('/auth/google',
   passport.authenticate('google', { scope: ['profile'] }));
