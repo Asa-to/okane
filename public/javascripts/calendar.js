@@ -33,8 +33,31 @@ const weeks = {
     6: '土'
 };
 
-const createCalendar = (year, month) => {
-    const date = new Date(`${months[month-1]} 1, ${year} 10:00:00`);
+const today = new Date();
+let year = today.getFullYear();
+let month = today.getMonth();
+
+const setLastMonth = () => {
+    if(month == 0){
+        month = 11;
+        year--;
+    }else{
+        month--;
+    }
+}
+
+const setNextMonth = () => {
+    if(month == 11){
+        month = 0;
+        year++;
+    }else{
+        month++;
+    }
+}
+
+
+const createCalendar = () => {
+    const date = new Date(year, month);
     //tableHtmlにカレンダーのhtmlを追加していく
     let tableHtml = '';
     //週を足す
@@ -49,7 +72,7 @@ const createCalendar = (year, month) => {
     console.log(lastDay);
     //週毎に日にちを入れていく
     let day = 1;
-    for(let week = 0; week < 6; week++){
+    while(day <= lastDay){
         tableHtml += '<tr>';
         for(let wday = 0; wday < 7 && day <= lastDay; wday++ ){
             if(day == 1 && wday < firstWday){
@@ -61,7 +84,24 @@ const createCalendar = (year, month) => {
         tableHtml += '</tr>';
     }
     tableHtml += '</table>'
-    document.getElementById('calendar').insertAdjacentHTML('afterbegin',tableHtml);
+    document.getElementById('calendar').innerHTML = tableHtml;
 }
 
-window.onload = createCalendar(new Date().getFullYear(), new Date().getMonth() + 1);
+const showCalendar = () => {
+    createCalendar();
+    document.getElementById('thisMonth').innerText = `${year}年${month+1}月`;
+}
+
+document.getElementById('nextMonthButton').addEventListener('click', () => {
+    setNextMonth();
+    showCalendar();
+});
+
+document.getElementById('lastMonthButton').addEventListener('click', () => {
+    setLastMonth();
+    showCalendar();
+});
+
+window.onload = () =>{
+    showCalendar();
+}
