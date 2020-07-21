@@ -10,3 +10,11 @@ a {
 table, tr, th ,td{
   border: solid 1px #7b8184;
 }
+
+.Sunday {
+  color: red;
+}
+
+.Saturday {
+  color: blue;
+}
