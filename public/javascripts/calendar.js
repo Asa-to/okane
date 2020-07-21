@@ -72,10 +72,10 @@ const createCalendar = () => {
     console.log(lastDay);
     //週毎に日にちを入れていく
     let day = 1;
-    while(day <= lastDay){
+    while(day < lastDay){
         tableHtml += '<tr>';
-        for(let wday = 0; wday < 7 && day <= lastDay; wday++ ){
-            if(day == 1 && wday < firstWday){
+        for(let wday = 0; wday < 7; wday++ ){
+            if(day == 1 && wday < firstWday || lastDay <= day){
                 tableHtml += '<td></td>';
             }else{
                 tableHtml += `<td>${day++}</td>`;
