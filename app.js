@@ -1,20 +1,20 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var helmet = require('helmet')
-var session = require('express-session');
-var passport = require('passport');
-var GoogleStrategy = require('passport-google-oauth20').Strategy;
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const helmet = require('helmet')
+const session = require('express-session');
+const passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
-var GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || '303339814215-46e7ksq2f33h7bka3rc2rtkk68krq1i1.apps.googleusercontent.com';
-var GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET || 'LvMewWkvb5kazKKhxVmliNU-';
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || '303339814215-46e7ksq2f33h7bka3rc2rtkk68krq1i1.apps.googleusercontent.com';
+const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET || 'LvMewWkvb5kazKKhxVmliNU-';
 
-passport.serializeUser(function(user, done){
+passport.serializeUser((user, done) => {
   done(null, user);
 });
-passport.deserializeUser(function(obj, done){
+passport.deserializeUser((obj, done) => {
   done(null, obj);
 });
 
@@ -23,20 +23,20 @@ passport.use(new GoogleStrategy({
     clientSecret: GOOGLE_CLIENT_SECRET,
     callbackURL: process.env.HEROKU_URL ? process.env.HEROKU_URL + 'auth/google/callback' : 'http://localhost:8000/auth/google/callback'
   },
-  function(accessToken, refreshToken, profile, done) {
-    process.nextTick(function (){
+  (accessToken, refreshToken, profile, done) => {
+    process.nextTick(() => {
       return done(null, profile);
     })
   }
 ));
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var loginRouter = require('./routes/login');
-var inputFormRouter = require('./routes/inputForm');
-var calendarRouter = require('./routes/calendar');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const loginRouter = require('./routes/login');
+const inputFormRouter = require('./routes/inputForm');
+const calendarRouter = require('./routes/calendar');
 
-var app = express();
+const app = express();
 app.use(helmet());
 
 // view engine setup
@@ -64,22 +64,22 @@ app.get('/auth/google',
  
 app.get('/auth/google/callback', 
   passport.authenticate('google', { failureRedirect: '/login' }),
-  function(req, res) {
+  (req, res) => {
     res.redirect('/');
   });
 
-app.get('/logout', function(req, res){
+app.get('/logout', (req, res) => {
   req.logOut();
   res.redirect('/');
 });
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use((err, req, res, next) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
