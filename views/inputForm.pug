@@ -3,26 +3,21 @@ extends layout
 block content
     if data
         p #{data['year']}年#{data['month']}月#{data['day']}日
-        if data['expence']
-            p #{data['payment']}円の支出がありました。
-        else
+        if data['income']
             p #{data['payment']}円の収入がありました。
+        else
+            p #{data['payment']}円の支出がありました。
         a(href='/inputForm') 入力ページに戻る
 
     else
         form(method='POST' action='inputForm/confirm')
-            input(type='number' name='year' value=today['year'])
-            | 年
-            input(type='number' name='month' value=today['month']) 
-            | 月
-            input(type='number' name='day' value=today['day']) 
-            | 日
+            input(type='date' name='date' value=today) 
             input(type='number' name='payment' required) 
             | 円
-            input(type='radio' name='balance' value='expence' checked='true') 
-            | 支出
-            input(type='radio' name='balance' value='income') 
+            input(type='radio' name='balance' value='income' checked='true') 
             | 収入
+            input(type='radio' name='balance' value='spending') 
+            | 支出
             input(type='submit' name='送信')
     
     p
