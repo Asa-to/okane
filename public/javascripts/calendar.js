@@ -94,7 +94,7 @@ const createCalendar = () => {
                 tableHtml += '<td></td>';
             }else{
                 const todayID = year + '-' + zeroPadding(month + 1, 2) + '-' + zeroPadding(day, 2);
-                tableHtml += `<td class="${todayID} ${weeksEN[wday]}">${day++}<br><span id="${todayID}income"></span><span id="${todayID}outcome"></span></td>`;
+                tableHtml += `<td class="${todayID} ${weeksEN[wday]}">${day++}<br><span id="${todayID}income"></span><br><span id="${todayID}outcome"></span></td>`;
             }
         }
         tableHtml += '</tr>';
