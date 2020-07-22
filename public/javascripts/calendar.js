@@ -93,7 +93,8 @@ const createCalendar = () => {
             if(day == 1 && wday < firstWday || lastDay <= day){
                 tableHtml += '<td></td>';
             }else{
-                tableHtml += `<td class="${year * 10000 + (month + 1) * 100 + day} ${weeksEN[wday]}">${day++}</td>`;
+                const todayID = year + '-' + zeroPadding(month + 1, 2) + '-' + zeroPadding(day, 2);
+                tableHtml += `<td class="${todayID} ${weeksEN[wday]}">${day++}<br><span id="${todayID}income"></span><span id="${todayID}outcome"></span></td>`;
             }
         }
         tableHtml += '</tr>';
@@ -101,6 +102,10 @@ const createCalendar = () => {
     tableHtml += '</table>'
     document.getElementById('calendar').innerHTML = tableHtml;
     setDateOption();
+}
+
+const zeroPadding = (num, length) => {
+    return ('00000000000000000000' + num).slice(-length);
 }
 
 const showCalendar = () => {

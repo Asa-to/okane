@@ -1,7 +1,7 @@
 const express = require('express');
 const { response } = require('../app');
 const router = express.Router();
-const mysql = require('mysql');
+const mysqlConnection = require('../mysqlConnection');
 
 const today = new Date();
 
@@ -19,15 +19,6 @@ router.post('/confirm', (req, res, next) => {
         income: req.body['balance'] === 'income'
     };
 
-    const mysqlConnection = mysql.createConnection({
-        host: 'us-cdbr-east-02.cleardb.com',
-        user: 'bacb732ba69df4',
-        password: 'e8313452',
-    });
-    mysqlConnection.connect((err) => {
-        if (err) throw err;
-        console.log('Complite connetion to my database');
-    });
     console.log(req.user.id);
     const sql = `INSERT INTO heroku_8b85ae0ae7221fe.money(user, amount, date, title) VALUES('${req.user.id}', '${req.body['payment'] * (req.body['balance'] === 'income' ? 1 : -1)}', '${req.body['date']}', '${req.body['title']}');`;
     mysqlConnection.query(sql, (err, result, fields) => {
