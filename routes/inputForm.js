@@ -1,7 +1,7 @@
 const express = require('express');
 const { response } = require('../app');
 const router = express.Router();
-const mysqlConnection = require('../mysqlConnection');
+const mysqlPool = require('../mysqlPool');
 
 const today = new Date();
 
@@ -21,7 +21,7 @@ router.post('/confirm', (req, res, next) => {
 
     console.log(req.user.id);
     const sql = `INSERT INTO heroku_8b85ae0ae7221fe.money(user, amount, date, title) VALUES('${req.user.id}', '${req.body['payment'] * (req.body['balance'] === 'income' ? 1 : -1)}', '${req.body['date']}', '${req.body['title']}');`;
-    mysqlConnection.query(sql, (err, result, fields) => {
+    mysqlPool.query(sql, (err, result, fields) => {
         if(err) throw err;
         console.log('data send complite');
         res.render('inputForm', { data: data });
