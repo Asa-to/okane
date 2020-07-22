@@ -20,16 +20,16 @@ router.post('/confirm', (req, res, next) => {
     };
 
     const mysqlConnection = mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: 'asato',
+        host: 'us-cdbr-east-02.cleardb.com',
+        user: 'bacb732ba69df4',
+        password: 'e8313452',
     });
     mysqlConnection.connect((err) => {
         if (err) throw err;
         console.log('Complite connetion to my database');
     });
     console.log(req.user.id);
-    const sql = `INSERT INTO okane.money(user, amount, date, title) VALUES('${req.user.id}', '${req.body['payment'] * req.body['balance'] === 'income' ? -1 : 1}', '${req.body['date']}', '${req.body['title']}');`;
+    const sql = `INSERT INTO heroku_8b85ae0ae7221fe.money(user, amount, date, title) VALUES('${req.user.id}', '${req.body['payment'] * req.body['balance'] === 'income' ? -1 : 1}', '${req.body['date']}', '${req.body['title']}');`;
     mysqlConnection.query(sql, (err, result, fields) => {
         if(err) throw err;
         console.log('data send complite');
