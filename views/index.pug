@@ -8,6 +8,12 @@ block content
     a(href='/logout') ログアウト
     p
       a(href='/calendar') カレンダー
+    span#thisMonth
+    input(type='button' id='lastMonthButton' value='先月')
+    input(type='button' id='nextMonthButton' value='翌月')
+    div#calendar
+
   else
     a(href='/auth/google') googleでログイン
-      
+  
+  script(src='/javascripts/calendar.js')
