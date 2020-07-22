@@ -1,5 +1,7 @@
 const express = require('express');
+const { response } = require('../app');
 const router = express.Router();
+const mysql = require('mysql');
 
 const today = new Date();
 
@@ -16,7 +18,23 @@ router.post('/confirm', (req, res, next) => {
         payment: req.body['payment'],
         income: req.body['balance'] === 'income'
     };
-    res.render('inputForm', {data: data});
+
+    const mysqlConnection = mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: 'asato',
+    });
+    mysqlConnection.connect((err) => {
+        if (err) throw err;
+        console.log('Complite connetion to my database');
+    });
+    console.log(req.user.id);
+    const sql = `INSERT INTO okane.money(user, amount, date, title) VALUES('${req.user.id}', '${req.body['payment'] * req.body['balance'] === 'income' ? -1 : 1}', '${req.body['date']}', '${req.body['title']}');`;
+    mysqlConnection.query(sql, (err, result, fields) => {
+        if(err) throw err;
+        console.log('data send complite');
+        res.render('inputForm', { data: data });
+    });
 });
 
 module.exports = router;

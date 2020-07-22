@@ -11,6 +11,8 @@ block content
 
     else
         form(method='POST' action='inputForm/confirm')
+            | タイトル
+            input(type='text' name='title' required)
             input(type='date' name='date' value=today) 
             input(type='number' name='payment' required) 
             | 円
