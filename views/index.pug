@@ -2,13 +2,20 @@ extends layout
 
 block content
   if user
-    p hello #{user.name.givenName}
-    a(href='/inputForm') 収支入力 <br>
-    a(href='/logout') ログアウト <br>
+    header
+      h1#title money manager
     //カレンダー
-    span#thisMonth
-    input(type='button' id='lastMonthButton' value='先月')
-    input(type='button' id='nextMonthButton' value='翌月')
-    div#calendar
+    div#calendarField
+      div#calendarHeaders
+        h1#thisMonth
+        div#changeMonthButton
+          div
+            input(type='button' id='lastMonthButton' value='先月')
+          div
+            input(type='button' id='nextMonthButton' value='翌月')
+      div#calendar
+      div#dateList
+
+    a(href='/inputForm') 収支入力 <br>
   
   script(src='/javascripts/calendar.js')

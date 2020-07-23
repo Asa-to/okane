@@ -1,0 +1,83 @@
+@mixin debugBorder() {
+    border: 1px red solid;
+}
+
+body {
+    padding: 30px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background: #97b5d3;
+}
+
+table {
+    padding: 0.2em 0.5em;
+    margin: 2em 0;
+    border: dashed 2px white;
+}
+
+tr, th, td {
+    border: solid black 1px;
+}
+
+header{
+    margin: 0 auto;
+    width: 75%;
+    background-color: white;
+    border: 3px grey double;
+    #title{
+        text-align: center;
+        font-family: 'Lexend Zetta', sans-serif;
+    }
+}
+
+$calendarMainColor: #d6ebff;
+#calendarField {
+    display: flex;
+    flex-direction: column;
+    margin: 15px auto 0 auto;
+    width: 70%;
+    background: $calendarMainColor;
+    box-shadow: 0px 0px 0px 10px $calendarMainColor;
+    border-radius: 10px;
+    #calendar {
+        table {
+            margin: 0 auto;
+            width: 100%;
+        }
+    }
+    #calendarHeaders {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 0 auto;
+        width: 90%;
+        #changeMonthButton {
+            vertical-align: middle;
+            display: flex;
+            flex-direction: row;
+            div{
+                height: 70%;
+                margin: auto;
+                input {
+                    height: 100%;
+                    width: 70px;
+                    text-decoration: none;
+                    font-weight: bold;
+                    font-size: 30px;
+                    color: #799dec;
+                    text-shadow: 0px 4px 2px rgba(0, 0, 0, 0.32), 0px 1px 0px #6182ca, 0px 2px 0px #4f6aa7, 0px 3px 0px #5470ad;
+                    background-color: $calendarMainColor;
+                    border-radius: 5px;
+                    border: none;
+                    &:active {
+                        top: 4px;
+                        text-shadow: none;
+                        
+                    }
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+        }
+    }
+}
