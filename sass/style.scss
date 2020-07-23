@@ -4,7 +4,7 @@
 
 body {
     padding: 30px;
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font: 14px "M PLUS Rounded 1c", Helvetica, Arial, sans-serif;
     background: #97b5d3;
 }
 
@@ -50,6 +50,15 @@ $calendarMainColor: #d6ebff;
         justify-content: space-between;
         margin: 0 auto;
         width: 90%;
+        #balanceOfMonth {
+            @include debugBorder();
+            display: flex;
+            flex-direction: column;
+            h2 {
+                padding: 0;
+                margin: 0;
+            }
+        }
         #changeMonthButton {
             vertical-align: middle;
             display: flex;

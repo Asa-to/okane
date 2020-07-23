@@ -1,6 +1,6 @@
 body {
   padding: 30px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "M PLUS Rounded 1c", Helvetica, Arial, sans-serif;
   background: #97b5d3; }
 
 table {
@@ -37,6 +37,13 @@ header {
     justify-content: space-between;
     margin: 0 auto;
     width: 90%; }
+    #calendarField #calendarHeaders #balanceOfMonth {
+      border: 1px red solid;
+      display: flex;
+      flex-direction: column; }
+      #calendarField #calendarHeaders #balanceOfMonth h2 {
+        padding: 0;
+        margin: 0; }
     #calendarField #calendarHeaders #changeMonthButton {
       vertical-align: middle;
       display: flex;
