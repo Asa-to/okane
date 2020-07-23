@@ -3,9 +3,12 @@
 }
 
 body {
-    padding: 30px;
     font: 14px "M PLUS Rounded 1c", Helvetica, Arial, sans-serif;
     background: #97b5d3;
+}
+
+tr, th, td {
+    border: solid black 1px;
 }
 
 table {
@@ -14,13 +17,9 @@ table {
     border: dashed 2px white;
 }
 
-tr, th, td {
-    border: solid black 1px;
-}
-
 header{
     margin: 0 auto;
-    width: 75%;
+    width: 90%;
     background-color: white;
     border: 3px grey double;
     #title{
@@ -34,7 +33,7 @@ $calendarMainColor: #d6ebff;
     display: flex;
     flex-direction: column;
     margin: 15px auto 0 auto;
-    width: 70%;
+    width: 85%;
     background: $calendarMainColor;
     box-shadow: 0px 0px 0px 10px $calendarMainColor;
     border-radius: 10px;

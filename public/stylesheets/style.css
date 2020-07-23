@@ -1,19 +1,18 @@
 body {
-  padding: 30px;
   font: 14px "M PLUS Rounded 1c", Helvetica, Arial, sans-serif;
   background: #97b5d3; }
+
+tr, th, td {
+  border: solid black 1px; }
 
 table {
   padding: 0.2em 0.5em;
   margin: 2em 0;
   border: dashed 2px white; }
 
-tr, th, td {
-  border: solid black 1px; }
-
 header {
   margin: 0 auto;
-  width: 75%;
+  width: 90%;
   background-color: white;
   border: 3px grey double; }
   header #title {
@@ -24,7 +23,7 @@ header {
   display: flex;
   flex-direction: column;
   margin: 15px auto 0 auto;
-  width: 70%;
+  width: 85%;
   background: #d6ebff;
   box-shadow: 0px 0px 0px 10px #d6ebff;
   border-radius: 10px; }
@@ -38,7 +37,6 @@ header {
     margin: 0 auto;
     width: 90%; }
     #calendarField #calendarHeaders #balanceOfMonth {
-      border: 1px red solid;
       display: flex;
       flex-direction: column; }
       #calendarField #calendarHeaders #balanceOfMonth h2 {
