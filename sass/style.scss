@@ -51,7 +51,6 @@ $calendarMainColor: #d6ebff;
         margin: 0 auto;
         width: 90%;
         #balanceOfMonth {
-            @include debugBorder();
             display: flex;
             flex-direction: column;
             h2 {
