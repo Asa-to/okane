@@ -7,17 +7,18 @@ block content
     //カレンダー
     div#calendarField
       div#calendarHeaders
-        h1#thisMonth
         div#totalAssets
           h2#totalAssets 総資産：
         div#balanceOfMonth
           h2#totalIncomeMonth 今月の収入：
           h2#totalOutcomeMonth 今月の支出：
-        div#changeMonthButton
-          div
-            input(type='button' id='lastMonthButton' value='先月')
-          div
-            input(type='button' id='nextMonthButton' value='翌月')
+        div
+          h1#thisMonth
+          div#changeMonthButton
+            div
+              input(type='button' id='lastMonthButton' value='先月')
+            div
+              input(type='button' id='nextMonthButton' value='翌月')
       div#calendar
       div#dateList
 

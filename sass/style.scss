@@ -28,6 +28,12 @@ header{
     }
 }
 
+.income {
+    color: blue;
+}
+.outcome {
+    color: red;
+}
 $calendarMainColor: #d6ebff;
 #calendarField {
     display: flex;
@@ -57,32 +63,82 @@ $calendarMainColor: #d6ebff;
                 margin: 0;
             }
         }
-        #changeMonthButton {
-            vertical-align: middle;
+        div{
             display: flex;
             flex-direction: row;
-            div{
-                height: 70%;
-                margin: auto;
-                input {
-                    height: 100%;
-                    width: 70px;
-                    text-decoration: none;
-                    font-weight: bold;
-                    font-size: 30px;
-                    color: #799dec;
-                    text-shadow: 0px 4px 2px rgba(0, 0, 0, 0.32), 0px 1px 0px #6182ca, 0px 2px 0px #4f6aa7, 0px 3px 0px #5470ad;
-                    background-color: $calendarMainColor;
-                    border-radius: 5px;
-                    border: none;
-                    &:active {
-                        top: 4px;
-                        text-shadow: none;
-                        
+            #thisMonth {
+                margin-right: 20px;
+            }
+            #changeMonthButton {
+                vertical-align: middle;
+                display: flex;
+                flex-direction: row;
+                div{
+                    input {
+                        height: 100%;
+                        width: 70px;
+                        text-decoration: none;
+                        font-weight: bold;
+                        font-size: 30px;
+                        color: #799dec;
+                        text-shadow: 0px 4px 2px rgba(0, 0, 0, 0.32), 0px 1px 0px #6182ca, 0px 2px 0px #4f6aa7, 0px 3px 0px #5470ad;
+                        background-color: $calendarMainColor;
+                        border-radius: 5px;
+                        border: none;
+                        &:active {
+                            top: 4px;
+                            text-shadow: none;
+                            
+                        }
+                        &:focus {
+                            outline: none;
+                        }
                     }
-                    &:focus {
-                        outline: none;
+                }
+            }
+        }
+    }
+}
+
+/** モバイル版 **/
+@media (max-width: 600px) {
+    body {
+        padding: 0;
+        margin: 0;
+    }
+    header {
+        width: 100%;
+    }
+    #calendarField {
+        #calendarHeaders {
+            flex-direction: column;
+            #totalAssets {
+                margin: 0;
+                order: 1;
+            }
+            #totalIncomeMonth {
+                order: 2;
+            }
+            #totalOutcomeMonth {
+                order: 3;
+            }
+            div {
+                width: 100%;
+                order: 4;
+                display: flex;
+                flex-direction: row;
+                #changeMonthButton {
+                    vertical-align: middle;
+                    width: 50%;
+                    div {
+                        height: 100%;
+                        margin-top: 0;
                     }
+                }
+                #thisMonth {
+                    margin: 0;
+                    text-align: center;
+                    width: 50%;
                 }
             }
         }

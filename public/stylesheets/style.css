@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body {
   font: 14px "M PLUS Rounded 1c", Helvetica, Arial, sans-serif;
   background: #97b5d3; }
@@ -18,6 +19,12 @@ header {
   header #title {
     text-align: center;
     font-family: 'Lexend Zetta', sans-serif; }
+
+.income {
+  color: blue; }
+
+.outcome {
+  color: red; }
 
 #calendarField {
   display: flex;
@@ -42,14 +49,16 @@ header {
       #calendarField #calendarHeaders #balanceOfMonth h2 {
         padding: 0;
         margin: 0; }
-    #calendarField #calendarHeaders #changeMonthButton {
-      vertical-align: middle;
+    #calendarField #calendarHeaders div {
       display: flex;
       flex-direction: row; }
-      #calendarField #calendarHeaders #changeMonthButton div {
-        height: 70%;
-        margin: auto; }
-        #calendarField #calendarHeaders #changeMonthButton div input {
+      #calendarField #calendarHeaders div #thisMonth {
+        margin-right: 20px; }
+      #calendarField #calendarHeaders div #changeMonthButton {
+        vertical-align: middle;
+        display: flex;
+        flex-direction: row; }
+        #calendarField #calendarHeaders div #changeMonthButton div input {
           height: 100%;
           width: 70px;
           text-decoration: none;
@@ -60,8 +69,40 @@ header {
           background-color: #d6ebff;
           border-radius: 5px;
           border: none; }
-          #calendarField #calendarHeaders #changeMonthButton div input:active {
+          #calendarField #calendarHeaders div #changeMonthButton div input:active {
             top: 4px;
             text-shadow: none; }
-          #calendarField #calendarHeaders #changeMonthButton div input:focus {
+          #calendarField #calendarHeaders div #changeMonthButton div input:focus {
             outline: none; }
+
+/** モバイル版 **/
+@media (max-width: 600px) {
+  body {
+    padding: 0;
+    margin: 0; }
+  header {
+    width: 100%; }
+  #calendarField #calendarHeaders {
+    flex-direction: column; }
+    #calendarField #calendarHeaders #totalAssets {
+      margin: 0;
+      order: 1; }
+    #calendarField #calendarHeaders #totalIncomeMonth {
+      order: 2; }
+    #calendarField #calendarHeaders #totalOutcomeMonth {
+      order: 3; }
+    #calendarField #calendarHeaders div {
+      width: 100%;
+      order: 4;
+      display: flex;
+      flex-direction: row; }
+      #calendarField #calendarHeaders div #changeMonthButton {
+        vertical-align: middle;
+        width: 50%; }
+        #calendarField #calendarHeaders div #changeMonthButton div {
+          height: 100%;
+          margin-top: 0; }
+      #calendarField #calendarHeaders div #thisMonth {
+        margin: 0;
+        text-align: center;
+        width: 50%; } }
