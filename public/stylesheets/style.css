@@ -52,6 +52,8 @@ header {
     #calendarField #calendarHeaders div {
       display: flex;
       flex-direction: row; }
+      #calendarField #calendarHeaders div h1 {
+        text-align: left; }
       #calendarField #calendarHeaders div #thisMonth {
         margin-right: 20px; }
       #calendarField #calendarHeaders div #changeMonthButton {
