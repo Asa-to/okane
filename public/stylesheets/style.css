@@ -98,11 +98,11 @@ header {
       flex-direction: row; }
       #calendarField #calendarHeaders div #changeMonthButton {
         vertical-align: middle;
-        width: 50%; }
+        width: 40%; }
         #calendarField #calendarHeaders div #changeMonthButton div {
           height: 100%;
           margin-top: 0; }
       #calendarField #calendarHeaders div #thisMonth {
         margin: 0;
         text-align: center;
-        width: 50%; } }
+        width: 55%; } }
