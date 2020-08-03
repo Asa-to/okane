@@ -56,8 +56,9 @@ main {
   main #calendarField {
     display: flex;
     flex-direction: column;
-    margin: 15px auto 0 auto;
-    width: 400px;
+    margin: 15px 0 0 0;
+    min-width: 320px;
+    max-width: 400px;
     background: #d6ebff;
     box-shadow: 0px 0px 0px 10px #d6ebff;
     border-radius: 10px; }
@@ -71,32 +72,5 @@ main {
 
 /** モバイル版 **/
 @media (max-width: 600px) {
-  body {
-    padding: 0;
-    margin: 0; }
-  header {
-    width: 100%; }
-  #calendarField #calendarHeaders {
-    flex-direction: column; }
-    #calendarField #calendarHeaders #totalAssets {
-      margin: 0;
-      order: 1; }
-    #calendarField #calendarHeaders #totalIncomeMonth {
-      order: 2; }
-    #calendarField #calendarHeaders #totalOutcomeMonth {
-      order: 3; }
-    #calendarField #calendarHeaders div {
-      width: 100%;
-      order: 4;
-      display: flex;
-      flex-direction: row; }
-      #calendarField #calendarHeaders div #changeMonthButton {
-        vertical-align: middle;
-        width: 40%; }
-        #calendarField #calendarHeaders div #changeMonthButton div {
-          height: 100%;
-          margin-top: 0; }
-      #calendarField #calendarHeaders div #thisMonth {
-        margin: 0;
-        text-align: center;
-        width: 55%; } }
+  main {
+    flex-direction: column; } }
