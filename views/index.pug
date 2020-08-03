@@ -12,11 +12,12 @@ block content
           li#totalIncomeMonth 今月の収入：
           li#totalOutcomeMonth 今月の支出：
       div#calendarField
-        h1#thisMonth
-        div#changeMonthButton
-          input(type='button' class='changeMonthButton' id='lastMonthButton' value='先月')
-          input(type='button' class='changeMonthButton' id='nextMonthButton' value='翌月')
-        div#calendar
+        div#calendarHeaders
+          h1#thisMonth
+          div#changeMonthButton
+            input(type='button' class='changeMonthButton' id='lastMonthButton' value='先月')
+            input(type='button' class='changeMonthButton' id='nextMonthButton' value='翌月')
+        table#calendar
       div#listOfDate
 
     a(href='/inputForm') 収支入力 <br>

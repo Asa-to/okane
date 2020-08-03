@@ -4,6 +4,9 @@ body {
   margin: 0;
   background: #97b5d3; }
 
+p {
+  margin: 0; }
+
 tr, th, td {
   border: solid black 1px; }
 
@@ -21,10 +24,12 @@ header {
     font-family: 'Lexend Zetta', sans-serif; }
 
 .income {
-  color: blue; }
+  color: blue;
+  text-align: right; }
 
 .outcome {
-  color: red; }
+  color: red;
+  text-align: right; }
 
 .changeMonthButton {
   height: 100%;
@@ -56,7 +61,11 @@ main {
     background: #d6ebff;
     box-shadow: 0px 0px 0px 10px #d6ebff;
     border-radius: 10px; }
-    main #calendarField #calendar table {
+    main #calendarField #calendarHeaders {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around; }
+    main #calendarField #calendar {
       margin: 0 auto;
       width: 100%; }
 

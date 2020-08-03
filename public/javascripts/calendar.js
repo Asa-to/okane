@@ -73,34 +73,51 @@ const setDateOption = () => {
 }
 
 const createCalendar = () => {
+    const calendar = document.getElementById('calendar');
+    calendar.innerHTML = '';
+    const thead = calendar.createTHead();
+    const tbody = calendar.createTBody();
+    let newRow;
+    let newCell;
     const date = new Date(year, month);
-    //tableHtmlにカレンダーのhtmlを追加していく
-    let tableHtml = '';
-    //週を足す
-    tableHtml = '<table><thead><tr>';
+    //週をtheadに設定する
+    newRow = thead.insertRow();
     for(let i = 0; i < 7; i++){
-        tableHtml += `<th class="${weeksEN[i]}">${weeks[i]}</th>`;
+        newCell = newRow.insertCell();
+        newCell.classList.add(weeksEN[i]);
+        newCell.appendChild(document.createTextNode(weeks[i]));
     }
-    tableHtml += '</tr></thead>'
     //1日の曜日(wday)を求めて、そこから最終日(lastDay)まで日にちを入れていく
     const firstWday = date.getDay();
     const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
-    //週毎に日にちを入れていく
-    let day = 1;
+    //tbodyに日にちを足していく
+    let day = 0;
     while(day < lastDay){
-        tableHtml += '<tr>';
+        newRow = tbody.insertRow();
         for(let wday = 0; wday < 7; wday++ ){
-            if(day == 1 && wday < firstWday || lastDay <= day){
-                tableHtml += '<td></td>';
+            newCell = newRow.insertCell();
+            if(day == 0 && wday < firstWday || lastDay <= day){
+                continue;
             }else{
                 const todayID = year + '-' + zeroPadding(month + 1, 2) + '-' + zeroPadding(day, 2);
-                tableHtml += `<td class="${todayID} ${weeksEN[wday]}"><span class="day">${day++}</span><br><span class="income" id="${todayID}income"></span><br><span class="outcome" id="${todayID}outcome"></span></td>`;
+                newCell.id = todayID;
+                newCell.classList.add = weeksEN[wday];
+                const dayP = document.createElement('p');
+                const incomeP = document.createElement('p');
+                const outcomeP = document.createElement('p');
+                dayP.textContent = ++day;
+                incomeP.textContent = '0';
+                outcomeP.textContent = '0';
+                dayP.classList.add('day');
+                incomeP.classList.add('income');
+                outcomeP.classList.add('outcome');
+                newCell.appendChild(dayP);
+                newCell.appendChild(incomeP);
+                newCell.appendChild(outcomeP);
+                // tableHtml += `<td class="${todayID} ${weeksEN[wday]}"><span class="day">${day++}</span><br><span class="income" id="${todayID}income"></span><br><span class="outcome" id="${todayID}outcome"></span></td>`;
             }
         }
-        tableHtml += '</tr>';
     }
-    tableHtml += '</table>'
-    document.getElementById('calendar').innerHTML = tableHtml;
     setDateOption();
 }
 
