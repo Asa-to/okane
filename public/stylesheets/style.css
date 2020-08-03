@@ -1,6 +1,7 @@
 @charset "UTF-8";
 body {
   font: 14px "M PLUS Rounded 1c", Helvetica, Arial, sans-serif;
+  margin: 0;
   background: #97b5d3; }
 
 tr, th, td {
@@ -13,7 +14,6 @@ table {
 
 header {
   margin: 0 auto;
-  width: 90%;
   background-color: white;
   border: 3px grey double; }
   header #title {
@@ -26,56 +26,39 @@ header {
 .outcome {
   color: red; }
 
-#calendarField {
+.changeMonthButton {
+  height: 100%;
+  width: 70px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 30px;
+  color: #799dec;
+  text-shadow: 0px 4px 2px rgba(0, 0, 0, 0.32), 0px 1px 0px #6182ca, 0px 2px 0px #4f6aa7, 0px 3px 0px #5470ad;
+  background-color: #d6ebff;
+  border-radius: 5px;
+  border: none; }
+  .changeMonthButton:active {
+    top: 4px;
+    text-shadow: none; }
+  .changeMonthButton:focus {
+    outline: none; }
+
+main {
   display: flex;
-  flex-direction: column;
-  margin: 15px auto 0 auto;
-  width: 85%;
-  background: #d6ebff;
-  box-shadow: 0px 0px 0px 10px #d6ebff;
-  border-radius: 10px; }
-  #calendarField #calendar table {
-    margin: 0 auto;
-    width: 100%; }
-  #calendarField #calendarHeaders {
+  flex-direction: row; }
+  main #monthDataField {
+    width: 20%; }
+  main #calendarField {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 0 auto;
-    width: 90%; }
-    #calendarField #calendarHeaders #balanceOfMonth {
-      display: flex;
-      flex-direction: column; }
-      #calendarField #calendarHeaders #balanceOfMonth h2 {
-        padding: 0;
-        margin: 0; }
-    #calendarField #calendarHeaders div {
-      display: flex;
-      flex-direction: row; }
-      #calendarField #calendarHeaders div h1 {
-        text-align: left; }
-      #calendarField #calendarHeaders div #thisMonth {
-        margin-right: 20px; }
-      #calendarField #calendarHeaders div #changeMonthButton {
-        vertical-align: middle;
-        display: flex;
-        flex-direction: row; }
-        #calendarField #calendarHeaders div #changeMonthButton div input {
-          height: 100%;
-          width: 70px;
-          text-decoration: none;
-          font-weight: bold;
-          font-size: 30px;
-          color: #799dec;
-          text-shadow: 0px 4px 2px rgba(0, 0, 0, 0.32), 0px 1px 0px #6182ca, 0px 2px 0px #4f6aa7, 0px 3px 0px #5470ad;
-          background-color: #d6ebff;
-          border-radius: 5px;
-          border: none; }
-          #calendarField #calendarHeaders div #changeMonthButton div input:active {
-            top: 4px;
-            text-shadow: none; }
-          #calendarField #calendarHeaders div #changeMonthButton div input:focus {
-            outline: none; }
+    flex-direction: column;
+    margin: 15px auto 0 auto;
+    width: 400px;
+    background: #d6ebff;
+    box-shadow: 0px 0px 0px 10px #d6ebff;
+    border-radius: 10px; }
+    main #calendarField #calendar table {
+      margin: 0 auto;
+      width: 100%; }
 
 /** モバイル版 **/
 @media (max-width: 600px) {
