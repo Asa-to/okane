@@ -10,7 +10,6 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/confirm', (req, res, next) => {
-    console.log(typeof(req.body['date']));
     const data = {
         year: req.body['date'].substr(0,4),
         month: req.body['date'].substr(5,2),

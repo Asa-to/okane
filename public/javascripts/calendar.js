@@ -15,7 +15,14 @@ const setDateOption = () => {
 }
 
 const setMonthData = (monthDataList) => {
-    console.log(monthDataList);
+    monthDataList.forEach((element) => {
+        console.log(element);
+        if(0 < element['amount']){
+            document.getElementById(`${element['date'].slice(0,10)+'income'}`).textContent += element['amount'];
+        }else{
+            document.getElementById(`${element['date'].slice(0,10)+'outcome'}`).textContent += element['amount'];
+        }
+    });
 }
 
 const getMonthData = (date) => {
@@ -27,6 +34,7 @@ const getMonthData = (date) => {
             setMonthData(result);
         }
     }
+    xhr.responseType = 'json';
     xhr.send();
 }
 

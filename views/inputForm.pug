@@ -14,7 +14,7 @@ block content
             | タイトル
             input(type='text' name='title' required)
             input(type='date' name='date' value=today) 
-            input(type='number' name='payment' required) 
+            input(type='number' min=1 max=9999999 name='payment' required) 
             | 円
             input(type='radio' name='balance' value='income' checked='true') 
             | 収入
