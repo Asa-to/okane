@@ -10,6 +10,14 @@ p {
 tr, th, td {
   border: solid black 1px; }
 
+li {
+  list-style: none;
+  padding: 0; }
+
+ul {
+  padding: 0;
+  margin: 0; }
+
 table {
   padding: 0.2em 0.5em;
   margin: 2em 0;
@@ -32,7 +40,6 @@ header {
   text-align: right; }
 
 .changeMonthButton {
-  height: 100%;
   width: 70px;
   text-decoration: none;
   font-weight: bold;
@@ -48,20 +55,27 @@ header {
   .changeMonthButton:focus {
     outline: none; }
 
+#thisMonth {
+  margin: 0; }
+
+#monthDataList {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 0; }
+
 main {
   display: flex;
-  flex-direction: row; }
-  main #monthDataField {
-    width: 20%; }
+  flex-direction: row;
+  justify-content: space-around; }
   main #calendarField {
     display: flex;
     flex-direction: column;
-    margin: 15px 0 0 0;
-    min-width: 320px;
-    max-width: 400px;
+    margin: 15px auto 0 auto;
+    width: 320px;
     background: #d6ebff;
     box-shadow: 0px 0px 0px 10px #d6ebff;
-    border-radius: 10px; }
+    border-radius: 15px; }
     main #calendarField #calendarHeaders {
       display: flex;
       flex-direction: row;
@@ -73,6 +87,4 @@ main {
 /** モバイル版 **/
 @media (max-width: 600px) {
   main {
-    flex-direction: column; }
-  #monthDataField {
-    width: 100%; } }
+    flex-direction: column; } }

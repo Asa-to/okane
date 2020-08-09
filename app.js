@@ -34,6 +34,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const loginRouter = require('./routes/login');
 const inputFormRouter = require('./routes/inputForm');
+const dataApiRouter = require('./routes/dataApi');
 
 const app = express();
 app.use(helmet());
@@ -56,6 +57,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);
 app.use('/inputForm', inputFormRouter);
+app.use('/dataApi', dataApiRouter);
 
 app.get('/auth/google',
   passport.authenticate('google', { scope: ['profile'] }));

@@ -1,9 +1,14 @@
 const express = require('express');
 const router = express.Router();
+const mysqlPool = require('./../mysqlPool');
 
 const zeroPadding = (num, length) => {
     return ('00000000000000000000' + num).slice(-length);
 }
+
+router.get('/', (req, res, next) => {
+    res.send('Please access to /sakura');
+});
 
 router.get('/sakura', (req, res, next) => {
     const query = `SELECT * FROM heroku_8b85ae0ae7221fe.money WHERE user=? AND DATE_FORMAT(date, '%Y%m')=?;`;
@@ -13,3 +18,5 @@ router.get('/sakura', (req, res, next) => {
         res.json(JSON.stringify(result));
     });
 });
+
+module.exports = router;
