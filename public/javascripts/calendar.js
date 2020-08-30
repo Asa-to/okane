@@ -12,16 +12,14 @@ const setMonthData = (monthDataList) => {
     let totalIncome = 0;
     let totalOutcome = 0;
     monthDataList.forEach((element) => {
-        console.log(element["amount"]);
         if(0 < element['amount']){
-            // document.getElementById(`${element['date'].slice(0,10)+'income'}`).textContent += element['amount'];
             const dayDate = document.getElementById(`${element['date'].slice(0,10)+'income'}`).textContent; 
             totalIncome += parseInt(element['amount']);
             document.getElementById(`${element['date'].slice(0,10)+'income'}`).textContent = parseInt(dayDate) + parseInt(element["amount"]);
         }else{
             const dayDate = document.getElementById(`${element['date'].slice(0,10)+'outcome'}`).textContent;
             totalOutcome += Math.abs(parseInt(element['amount']));
-            document.getElementById(`${element['date'].slice(0,10)+'outcome'}`).textContent = Math.abs(parseInt(dayDate)) + Math.abs(parseInt(element["amount"]));
+            document.getElementById(`${element['date'].slice(0,10)+'outcome'}`).textContent = parseInt(dayDate) + parseInt(element["amount"]);
         }
     });
     document.getElementById('totalIncomeMonth').textContent = `今月の収入：${totalIncome}`;
@@ -29,20 +27,16 @@ const setMonthData = (monthDataList) => {
 }
 
 const getMonthData = (date) => {
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', `/dataApi/sakura?month=${month+1}&year=${year}`);
-    xhr.onreadystatechange = () => {
-        if(xhr.readyState == 4){
-            const result = JSON.parse(xhr.response);
-            setMonthData(result);
-        }
-    }
-    xhr.responseType = 'json';
-    xhr.send();
+    fetch(`/dataApi/sakura?month=${month+1}&year=${year}`, {
+        method: 'GET'
+    })
+    .then(response => response.json())
+    .then(json => {
+        setMonthData(JSON.parse(json));
+    });
 }
 
 const setTotalAssett = () => {
-    console.log('start to get reuest to dataApi/totalAsset');
     fetch('/dataApi/totalAsset', {
         method: 'GET'
     })
@@ -50,7 +44,6 @@ const setTotalAssett = () => {
     .then(content => {
         console.log(content);
         const asset = JSON.parse(content);
-        console.log(asset);
         document.getElementById('totalAssets').textContent = `総資産：${asset['0']['SUM(amount)']}`;
     });
 }
