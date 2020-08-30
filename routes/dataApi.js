@@ -7,7 +7,7 @@ const zeroPadding = (num, length) => {
 }
 
 router.get('/', (req, res, next) => {
-    res.send('Please access to /sakura');
+    res.send('Please access to /sakura or anything');
 });
 
 router.get('/sakura', (req, res, next) => {
@@ -15,6 +15,15 @@ router.get('/sakura', (req, res, next) => {
     mysqlPool.query(query, [req.user.id, `${req.query.year}${zeroPadding(req.query.month,2)}`], (err, result, fields) => {
         if (err) throw err;
         console.log(result);
+        res.json(JSON.stringify(result));
+    });
+});
+
+router.get('/totalAsset', (req, res, next) => {
+    const query = `SELECT SUM(amount) FROM heroku_8b85ae0ae7221fe.money WHERE user=?;`;
+    mysqlPool.query(query, [req.user.id], (err, result, fields) => {
+        if(err) throw err;
+        console.log(JSON.stringify(result));
         res.json(JSON.stringify(result));
     });
 });

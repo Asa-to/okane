@@ -71,8 +71,8 @@ main {
   main #calendarField {
     display: flex;
     flex-direction: column;
+    max-width: 500px;
     margin: 15px auto 0 auto;
-    width: 320px;
     background: #d6ebff;
     box-shadow: 0px 0px 0px 10px #d6ebff;
     border-radius: 15px; }
@@ -82,9 +82,8 @@ main {
       justify-content: space-around; }
     main #calendarField #calendar {
       margin: 0 auto;
-      width: 100%; }
-      main #calendarField #calendar td {
-        width: 14%; }
+      width: 100%;
+      table-layout: fixed; }
 
 /** モバイル版 **/
 @media (max-width: 600px) {

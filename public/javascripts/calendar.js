@@ -8,21 +8,24 @@ const today = new Date();
 let year = today.getFullYear();
 let month = today.getMonth();
 
-const setDateOption = () => {
-    Array.prototype.forEach.call(document.getElementsByClassName(`${today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate()}`), element => {
-        element.classList.add('today');
-    });
-}
-
 const setMonthData = (monthDataList) => {
+    let totalIncome = 0;
+    let totalOutcome = 0;
     monthDataList.forEach((element) => {
-        console.log(element);
+        console.log(element["amount"]);
         if(0 < element['amount']){
-            document.getElementById(`${element['date'].slice(0,10)+'income'}`).textContent += element['amount'];
+            // document.getElementById(`${element['date'].slice(0,10)+'income'}`).textContent += element['amount'];
+            const dayDate = document.getElementById(`${element['date'].slice(0,10)+'income'}`).textContent; 
+            totalIncome += parseInt(element['amount']);
+            document.getElementById(`${element['date'].slice(0,10)+'income'}`).textContent = parseInt(dayDate) + parseInt(element["amount"]);
         }else{
-            document.getElementById(`${element['date'].slice(0,10)+'outcome'}`).textContent += element['amount'];
+            const dayDate = document.getElementById(`${element['date'].slice(0,10)+'outcome'}`).textContent;
+            totalOutcome += Math.abs(parseInt(element['amount']));
+            document.getElementById(`${element['date'].slice(0,10)+'outcome'}`).textContent = Math.abs(parseInt(dayDate)) + Math.abs(parseInt(element["amount"]));
         }
     });
+    document.getElementById('totalIncomeMonth').textContent = `今月の収入：${totalIncome}`;
+    document.getElementById('totalOutcomeMonth').textContent = `今月の支出：${totalOutcome}`;
 }
 
 const getMonthData = (date) => {
@@ -36,6 +39,20 @@ const getMonthData = (date) => {
     }
     xhr.responseType = 'json';
     xhr.send();
+}
+
+const setTotalAssett = () => {
+    console.log('start to get reuest to dataApi/totalAsset');
+    fetch('/dataApi/totalAsset', {
+        method: 'GET'
+    })
+    .then(response => response.json())
+    .then(content => {
+        console.log(content);
+        const asset = JSON.parse(content);
+        console.log(asset);
+        document.getElementById('totalAssets').textContent = `総資産：${asset['0']['SUM(amount)']}`;
+    });
 }
 
 const createCalendar = () => {
@@ -86,7 +103,6 @@ const createCalendar = () => {
             }
         }
     }
-    setDateOption();
 }
 
 const zeroPadding = (num, length) => {
@@ -96,6 +112,7 @@ const zeroPadding = (num, length) => {
 const showCalendar = () => {
     createCalendar();
     getMonthData();
+    setTotalAssett();
     document.getElementById('thisMonth').innerText = `${year}年${month+1}月`;
 }
 

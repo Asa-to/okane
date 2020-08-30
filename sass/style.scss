@@ -91,8 +91,8 @@ main {
     #calendarField {
         display: flex;
         flex-direction: column;
+        max-width: 500px;
         margin: 15px auto 0 auto ;
-        width: 320px;
         background: $calendarMainColor;
         box-shadow: 0px 0px 0px 10px $calendarMainColor;
         border-radius: 15px;
@@ -104,9 +104,7 @@ main {
         #calendar {
             margin: 0 auto;
             width: 100%;
-            td {
-                width: 14%;
-            }
+            table-layout: fixed;
         }
     }
 }
