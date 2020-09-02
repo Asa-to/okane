@@ -23,8 +23,8 @@ router.post('/confirm', (req, res, next) => {
     mysqlPool.query(sql, (err, result, fields) => {
         if(err) throw err;
         console.log('data send complite');
-        res.render('inputForm', { data: data });
     });
+    res.redirect('/');
 });
 
 module.exports = router;
