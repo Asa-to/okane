@@ -12,18 +12,38 @@ const setMonthData = (monthDataList) => {
     let totalIncome = 0;
     let totalOutcome = 0;
     monthDataList.forEach((element) => {
+        console.log(element);
         if(0 < element['amount']){
-            const dayDate = document.getElementById(`${element['date'].slice(0,10)+'income'}`).textContent; 
+            const dayData = document.getElementById(`${element['date']}income`).textContent; 
             totalIncome += parseInt(element['amount']);
-            document.getElementById(`${element['date'].slice(0,10)+'income'}`).textContent = parseInt(dayDate) + parseInt(element["amount"]);
+            document.getElementById(`${element['date']}income`).textContent = parseInt(dayData) + parseInt(element["amount"]);
         }else{
-            const dayDate = document.getElementById(`${element['date'].slice(0,10)+'outcome'}`).textContent;
+            const dayData = document.getElementById(`${element['date']}outcome`).textContent;
             totalOutcome += Math.abs(parseInt(element['amount']));
-            document.getElementById(`${element['date'].slice(0,10)+'outcome'}`).textContent = parseInt(dayDate) + parseInt(element["amount"]);
+            document.getElementById(`${element['date']}outcome`).textContent = parseInt(dayData) + parseInt(element["amount"]);
         }
     });
     document.getElementById('totalIncomeMonth').textContent = `今月の収入：${totalIncome}`;
     document.getElementById('totalOutcomeMonth').textContent = `今月の支出：${totalOutcome}`;
+}
+
+const printDataList = (data) => {
+    const table = document.getElementById('dataListTable');
+    table.removeChild(document.getElementById('tbody'));
+    const tbody = table.createTBody();
+    tbody.id = 'tbody';
+    data.forEach( dataColume => {
+        const newRow = tbody.insertRow();
+        const keys = ['date', 'title', 'amount'];
+        for(key in keys){
+            const newCell = newRow.insertCell();
+            if(keys[key] == 'date'){
+                newCell.appendChild(document.createTextNode(dataColume[keys[key]].slice(8, 10)));
+            }else{
+                newCell.appendChild(document.createTextNode(dataColume[keys[key]]));
+            }
+        }
+    });
 }
 
 const getMonthData = (date) => {
@@ -33,6 +53,7 @@ const getMonthData = (date) => {
     .then(response => response.json())
     .then(json => {
         setMonthData(JSON.parse(json));
+        printDataList(JSON.parse(json));
     });
 }
 
@@ -42,7 +63,6 @@ const setTotalAssett = () => {
     })
     .then(response => response.json())
     .then(content => {
-        console.log(content);
         const asset = JSON.parse(content);
         document.getElementById('totalAssets').textContent = `総資産：${asset['0']['SUM(amount)']}`;
     });

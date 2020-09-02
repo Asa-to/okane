@@ -10,17 +10,22 @@ block content
         ul#monthDataList
           li#totalAssets 総資産：100000
           ul#monthData
-            li#totalIncomeMonth 今月の収入：100000
-            li#totalOutcomeMonth 今月の支出：100000
+            li#totalIncomeMonth 今月の収入：
+            li#totalOutcomeMonth 今月の支出：
         div#calendarHeaders
           h1#thisMonth
           div#changeMonthButton
             input(type='button' class='changeMonthButton' id='lastMonthButton' value='先月')
             input(type='button' class='changeMonthButton' id='nextMonthButton' value='翌月')
         table#calendar
-      div#listOfDate
-
-      ul#dataList
+      table#dataListTable
+        thead
+          tr
+            td 日付
+            td 詳細
+            td 金額
+            td 削除
+        tbody#tbody
 
     a(href='/inputForm') 収支入力 <br>
   
