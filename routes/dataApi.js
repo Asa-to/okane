@@ -20,6 +20,14 @@ router.get('/sakura', (req, res, next) => {
     });
 });
 
+router.get('/delete', (req, res, next) =>{
+    const query = `DELETE FROM heroku_8b85ae0ae7221fe.money WHERE user=? AND id=?`;
+    mysqlPool.query(query, [req.user.id, req.query.ID], (err, result, fields) => {
+        if(err) throw err;
+        res.send('delete complete');
+    });
+});
+
 router.get('/totalAsset', (req, res, next) => {
     const query = `SELECT SUM(amount) FROM heroku_8b85ae0ae7221fe.money WHERE user=?;`;
     mysqlPool.query(query, [req.user.id], (err, result, fields) => {

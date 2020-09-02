@@ -43,6 +43,21 @@ const printDataList = (data) => {
                 newCell.appendChild(document.createTextNode(dataColume[keys[key]]));
             }
         }
+        const newCell = newRow.insertCell();
+        const deleteButton = document.createElement('button');
+        deleteButton.type = 'button';
+        deleteButton.textContent = '削除'
+        deleteButton.id = dataColume['id'];
+        deleteButton.onclick = () => {
+            fetch(`/dataApi/delete?ID=${dataColume['id']}`, {
+                method: 'GET'
+            })
+            .then(response => response.text())
+            .then(result => {
+                showCalendar();
+            });
+        };
+        newCell.appendChild(deleteButton);
     });
 }
 
@@ -65,6 +80,7 @@ const setTotalAssett = () => {
     .then(content => {
         const asset = JSON.parse(content);
         document.getElementById('totalAssets').textContent = `総資産：${asset['0']['SUM(amount)']}`;
+        if(document.getElementById('totalAssets').textContent == '総資産：null') document.getElementById('totalAssets').textContent = '総資産：0';
     });
 }
 
